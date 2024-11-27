@@ -3,4 +3,43 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+    <display-name>Atelier 1 Web Application</display-name>
+
+    <!-- Servlet Declarations -->
+    <servlet>
+        <servlet-name>ClientServlet</servlet-name>
+        <servlet-class>ma.fstt.atelier1.servlets.ClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientServlet</servlet-name>
+        <url-pattern>/clients/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommandeServlet</servlet-name>
+        <servlet-class>ma.fstt.atelier1.servlets.CommandeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommandeServlet</servlet-name>
+        <url-pattern>/commandes/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LigneDeCommandeServlet</servlet-name>
+        <servlet-class>ma.fstt.atelier1.servlets.LigneDeCommandeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LigneDeCommandeServlet</servlet-name>
+        <url-pattern>/lignes-de-commande/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProduitServlet</servlet-name>
+        <servlet-class>ma.fstt.atelier1.servlets.ProduitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProduitServlet</servlet-name>
+        <url-pattern>/produits/*</url-pattern>
+    </servlet-mapping>
 </web-app>
