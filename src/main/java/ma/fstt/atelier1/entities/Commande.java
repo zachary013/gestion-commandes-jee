@@ -1,53 +1,29 @@
 package ma.fstt.atelier1.entities;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "commandes")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Commande {
-    private int id;
-    private Date date;
-    private double total;
-    private String clientId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    // Constructeurs
-    public Commande() {}
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCommande;
 
-    public Commande(int id, Date date, double total, String clientId) {
-        this.id = id;
-        this.date = date;
-        this.total = total;
-        this.clientId = clientId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    // Getters et setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LigneDeCommande> lignes;
 }
